@@ -127,6 +127,10 @@ public class ImageActivity extends AppCompatActivity implements DownloadCallback
 
     @Override
     public void onRequestResult(List<String> findingsStr) {
+        if(findingsStr == null || findingsStr.size() < 0) {
+            return;
+        }
+
         try {
             JSONArray jsonArray = new JSONArray(findingsStr.get(0));
 

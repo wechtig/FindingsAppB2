@@ -51,22 +51,16 @@ public class MainActivity extends AppCompatActivity implements DownloadCallback,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         project = getIntent().getExtras().getString("selectedProject");
+        String dateFrom = getIntent().getExtras().getString("dateFrom");
+        String dateTo = getIntent().getExtras().getString("dateTo");
 
         HttpsGetTask httpsGetTask = new HttpsGetTask(this);
         Resources res = getResources();
-        int days = Integer.parseInt(res.getString(R.string.search_period_days));
-        LocalDate endDate = null;
-        LocalDate startDate = null;
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         Objects.requireNonNull(sensorManager).registerListener(mSensorListener, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
                 SensorManager.SENSOR_DELAY_NORMAL);
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            endDate = LocalDate.now();
-            startDate = endDate.minusDays(days);
-        }
-
-        String path = res.getString(R.string.findings_file_url)+"/"+project+"/"+startDate.format(formatter)+"/"+endDate.format(formatter);
+        String path = res.getString(R.string.findings_file_url)+"/"+project+"/"+dateFrom+"/"+dateTo;
         httpsGetTask.execute(path);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bnvMain);
@@ -104,6 +98,10 @@ public class MainActivity extends AppCompatActivity implements DownloadCallback,
         }
 
         currentFinding = index;
+
+        if(findings == null || findings.size() < 1) {
+            return;
+        }
         Finding currentFinding = findings.get(index);
 
         TextView altTextView = findViewById(R.id.FindingMessage);

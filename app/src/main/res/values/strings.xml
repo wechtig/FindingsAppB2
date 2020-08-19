@@ -7,4 +7,7 @@
     <string name="search_period_days">1000</string>
     <string name="findings_images_file_url">http://192.168.56.1:8084/android/findings/images</string>
     <string name="image_activity">Images</string>
+    <string name="pick_time">Von</string>
+    <string name="pick_time_von">Von</string>
+    <string name="pick_time_bis">Bis</string>
 </resources>
