@@ -2,7 +2,7 @@
 __Year:__ 2020  
 
 ## Ausgangssituation und Idee
-Die mobile Applikation FindingsAppB2 ist ein Bestandteil des FindingsAnalyzerBac2: https://github.com/wechtig/FindingsAnalyzerBac2
+Die mobile Applikation FindingsAppB2 ist ein Bestandteil des [FindingsAnalyzerBac2](https://github.com/wechtig/FindingsAnalyzerBac2)
 
 ## Ziele
 * Einfache Anzeige der wichtigsten Daten
